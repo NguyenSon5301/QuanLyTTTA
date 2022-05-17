@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8AD51652-251F-4955-BADD-39F654C824D2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BigProject</RootNamespace>
+    <AssemblyName>BigProject</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChuaNopHocPhi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChuaNopHocPhi.Designer.cs">
+      <DependentUpon>ChuaNopHocPhi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DangNhap.Context.cs" />
+    <Compile Include="DangNhap.Context1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DangNhap.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DangNhap.cs" />
+    <Compile Include="DangNhap.Designer.cs">
+      <DependentUpon>DangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DangNhap1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DangNhap.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DangNhapTK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DangNhapTK.Designer.cs">
+      <DependentUpon>DangNhapTK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataQuanLy.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataQuanLy.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataQuanLy.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataQuanLy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataQuanLy.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataQuanLy.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="GiaoVien.cs">
+      <DependentUpon>DataQuanLy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HomeAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HomeAdmin.Designer.cs">
+      <DependentUpon>HomeAdmin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InClass.cs">
+      <DependentUpon>DataQuanLy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InStudent.cs">
+      <DependentUpon>DataQuanLy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NopHP.cs">
+      <DependentUpon>DataQuanLy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>DataQuanLy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ThongTinCacGiaoVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongTinCacGiaoVien.Designer.cs">
+      <DependentUpon>ThongTinCacGiaoVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThongTinCacLopHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongTinCacLopHoc.Designer.cs">
+      <DependentUpon>ThongTinCacLopHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserAD.cs">
+      <DependentUpon>DataQuanLy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserSV.cs">
+      <DependentUpon>DataQuanLy.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MauHome.cs" />
+    <Compile Include="Dangky.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dangky.Designer.cs">
+      <DependentUpon>Dangky.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DoiMatKhau.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DoiMatKhau.Designer.cs">
+      <DependentUpon>DoiMatKhau.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HomeUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HomeUser.Designer.cs">
+      <DependentUpon>HomeUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InFormUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InFormUser.Designer.cs">
+      <DependentUpon>InFormUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LienLacGV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LienLacGV.Designer.cs">
+      <DependentUpon>LienLacGV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NopHocPhi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NopHocPhi.Designer.cs">
+      <DependentUpon>NopHocPhi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ThemGiaoVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThemGiaoVien.Designer.cs">
+      <DependentUpon>ThemGiaoVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThemLopHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThemLopHoc.Designer.cs">
+      <DependentUpon>ThemLopHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThongKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongKe.Designer.cs">
+      <DependentUpon>ThongKe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ThongTinCacHocVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ThongTinCacHocVien.Designer.cs">
+      <DependentUpon>ThongTinCacHocVien.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ChuaNopHocPhi.resx">
+      <DependentUpon>ChuaNopHocPhi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DangNhapTK.dje.resx">
+      <DependentUpon>DangNhapTK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DangNhapTK.resx">
+      <DependentUpon>DangNhapTK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dangky.resx">
+      <DependentUpon>Dangky.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DoiMatKhau.resx">
+      <DependentUpon>DoiMatKhau.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HomeAdmin.resx">
+      <DependentUpon>HomeAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HomeUser.resx">
+      <DependentUpon>HomeUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InFormUser.resx">
+      <DependentUpon>InFormUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LienLacGV.resx">
+      <DependentUpon>LienLacGV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NopHocPhi.resx">
+      <DependentUpon>NopHocPhi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThemGiaoVien.resx">
+      <DependentUpon>ThemGiaoVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThemLopHoc.resx">
+      <DependentUpon>ThemLopHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongKe.resx">
+      <DependentUpon>ThongKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongTinCacGiaoVien.resx">
+      <DependentUpon>ThongTinCacGiaoVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongTinCacHocVien.resx">
+      <DependentUpon>ThongTinCacHocVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ThongTinCacLopHoc.resx">
+      <DependentUpon>ThongTinCacLopHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="DangNhap.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DangNhap.Context1.cs</LastGenOutput>
+    </None>
+    <None Include="DangNhap.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DangNhap1.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="DataQuanLy.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DataQuanLy.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DataQuanLy.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataQuanLy.edmx</DependentUpon>
+      <LastGenOutput>DataQuanLy.Context.cs</LastGenOutput>
+    </None>
+    <None Include="DataQuanLy.edmx.diagram">
+      <DependentUpon>DataQuanLy.edmx</DependentUpon>
+    </None>
+    <None Include="DataQuanLy.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataQuanLy.edmx</DependentUpon>
+      <LastGenOutput>DataQuanLy.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\83680911_104862804421610_5479962589876191232_n.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Custom-Icon-Design-Flatastic-4-Close.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hopstarter-Rounded-Square-Button-Delete.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Button-Delete-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\83680911_104862804421610_5479962589876191232_n1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons8-Windows-8-Programming-Maximize-Window.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons8-Windows-8-User-Interface-Close-Window.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icons8-Windows-8-Programming-Minimize-Window.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Oxygen-Icons.org-Oxygen-Apps-preferences-desktop-user-password.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Custom-Icon-Design-Pretty-Office-Personal-information.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Custom-Icon-Design-Flatastic-7-Teachers.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Aha-Soft-Business-Toolbar-Payment.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Webalys-Kameleon.pics-Man-14.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Webalys-Kameleon.pics-Man-141.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Aha-Soft-Free-Large-Boss-Admin.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Aha-Soft-Large-Seo-SEO.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Iconsmind-Outline-Students.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Webalys-Kameleon.pics-Student-3.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Student-3-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3700481-blackboard-board-chalk-class-educational-materials-school_108759.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\teacher_education_school_lecture_student_icon_141984.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-teacher-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\10218-man-teacher-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Oxygen-Icons.org-Oxygen-Actions-contact-new.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Gakuseisean-Aire-Add-Folder.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Fasticon-Isimple-System-App-info.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\86289862_107209607520263_4445841164871925760_n.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ELStrategies_Slider_Image_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Designbolts-Seo-Pay-Per-Click.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyTTTA", "BigProject\QuanLyTTTA.csproj", "{8AD51652-251F-4955-BADD-39F654C824D2}"
+EndProject
+Project("{840C416C-B8F3-42BC-B0DD-F6BB14C9F8CB}") = "TTTAManagerment", "TTTAManagerment\TTTAManagerment.aiproj", "{BC7D8560-432E-4C71-9916-09BDF1494B5E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8AD51652-251F-4955-BADD-39F654C824D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AD51652-251F-4955-BADD-39F654C824D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AD51652-251F-4955-BADD-39F654C824D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AD51652-251F-4955-BADD-39F654C824D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BC7D8560-432E-4C71-9916-09BDF1494B5E}.Debug|Any CPU.ActiveCfg = DefaultBuild
+		{BC7D8560-432E-4C71-9916-09BDF1494B5E}.Debug|Any CPU.Build.0 = DefaultBuild
+		{BC7D8560-432E-4C71-9916-09BDF1494B5E}.Release|Any CPU.ActiveCfg = DefaultBuild
+		{BC7D8560-432E-4C71-9916-09BDF1494B5E}.Release|Any CPU.Build.0 = DefaultBuild
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

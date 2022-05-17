@@ -1,0 +1,428 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QuanLyTTTAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GiaoVien">
+          <Key>
+            <PropertyRef Name="IDGV" />
+          </Key>
+          <Property Name="IDGV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HTGV" Type="nvarchar" MaxLength="30" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="DCGV" Type="nvarchar" MaxLength="50" />
+          <Property Name="SDTGV" Type="char" MaxLength="10" />
+          <Property Name="EmailGV" Type="char" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="InClass">
+          <Key>
+            <PropertyRef Name="MaLop" />
+          </Key>
+          <Property Name="MaLop" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="SLHVDK" Type="int" />
+          <Property Name="SLHVTD" Type="int" />
+          <Property Name="KGH" Type="nvarchar" MaxLength="30" />
+          <Property Name="NBD" Type="date" />
+          <Property Name="SBH" Type="int" />
+          <Property Name="HP" Type="int" />
+          <Property Name="IDGV" Type="int" />
+        </EntityType>
+        <EntityType Name="InStudent">
+          <Key>
+            <PropertyRef Name="IDHV" />
+          </Key>
+          <Property Name="IDHV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HT" Type="nvarchar" MaxLength="20" />
+          <Property Name="SDT" Type="char" MaxLength="10" />
+          <Property Name="DC" Type="nvarchar" MaxLength="50" />
+          <Property Name="NDKH" Type="date" />
+          <Property Name="TTHP" Type="bit" />
+          <Property Name="MaLop" Type="char" MaxLength="20" />
+          <Property Name="EMAIL" Type="char" MaxLength="30" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'QuanLyTTTA.dbo.NopHP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="NopHP">
+          <Key>
+            <PropertyRef Name="IDHV" />
+          </Key>
+          <Property Name="IDHV" Type="int" Nullable="false" />
+          <Property Name="HTHV" Type="nvarchar" MaxLength="20" />
+          <Property Name="NgayNop" Type="date" />
+          <Property Name="LoiNhan" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UserAD">
+          <Key>
+            <PropertyRef Name="IDAD" />
+          </Key>
+          <Property Name="IDAD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaiKhoanAD" Type="varchar" MaxLength="50" />
+          <Property Name="MatKhauAD" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="UserSV">
+          <Key>
+            <PropertyRef Name="TaiKhoanSV" />
+          </Key>
+          <Property Name="IDHV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TaiKhoanSV" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MatKhauSV" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_IDGV">
+          <End Role="GiaoVien" Type="Self.GiaoVien" Multiplicity="0..1" />
+          <End Role="InClass" Type="Self.InClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GiaoVien">
+              <PropertyRef Name="IDGV" />
+            </Principal>
+            <Dependent Role="InClass">
+              <PropertyRef Name="IDGV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IDHV">
+          <End Role="InStudent" Type="Self.InStudent" Multiplicity="1" />
+          <End Role="UserSV" Type="Self.UserSV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InStudent">
+              <PropertyRef Name="IDHV" />
+            </Principal>
+            <Dependent Role="UserSV">
+              <PropertyRef Name="IDHV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IDHV1">
+          <End Role="InStudent" Type="Self.InStudent" Multiplicity="1" />
+          <End Role="NopHP" Type="Self.NopHP" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="InStudent">
+              <PropertyRef Name="IDHV" />
+            </Principal>
+            <Dependent Role="NopHP">
+              <PropertyRef Name="IDHV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML">
+          <End Role="InClass" Type="Self.InClass" Multiplicity="0..1" />
+          <End Role="InStudent" Type="Self.InStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InClass">
+              <PropertyRef Name="MaLop" />
+            </Principal>
+            <Dependent Role="InStudent">
+              <PropertyRef Name="MaLop" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuanLyTTTAModelStoreContainer">
+          <EntitySet Name="GiaoVien" EntityType="Self.GiaoVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InClass" EntityType="Self.InClass" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InStudent" EntityType="Self.InStudent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserAD" EntityType="Self.UserAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSV" EntityType="Self.UserSV" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NopHP" EntityType="Self.NopHP" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [NopHP].[IDHV] AS [IDHV], 
+    [NopHP].[HTHV] AS [HTHV], 
+    [NopHP].[NgayNop] AS [NgayNop], 
+    [NopHP].[LoiNhan] AS [LoiNhan]
+    FROM [dbo].[NopHP] AS [NopHP]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_IDGV" Association="Self.FK_IDGV">
+            <End Role="GiaoVien" EntitySet="GiaoVien" />
+            <End Role="InClass" EntitySet="InClass" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IDHV" Association="Self.FK_IDHV">
+            <End Role="InStudent" EntitySet="InStudent" />
+            <End Role="UserSV" EntitySet="UserSV" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IDHV1" Association="Self.FK_IDHV1">
+            <End Role="InStudent" EntitySet="InStudent" />
+            <End Role="NopHP" EntitySet="NopHP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML" Association="Self.FK_ML">
+            <End Role="InClass" EntitySet="InClass" />
+            <End Role="InStudent" EntitySet="InStudent" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QuanLyTTTAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="GiaoVien">
+          <Key>
+            <PropertyRef Name="IDGV" />
+          </Key>
+          <Property Name="IDGV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HTGV" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="DCGV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SDTGV" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="EmailGV" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="InClasses" Relationship="Self.FK_IDGV" FromRole="GiaoVien" ToRole="InClass" />
+        </EntityType>
+        <EntityType Name="InClass">
+          <Key>
+            <PropertyRef Name="MaLop" />
+          </Key>
+          <Property Name="MaLop" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SLHVDK" Type="Int32" />
+          <Property Name="SLHVTD" Type="Int32" />
+          <Property Name="KGH" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="NBD" Type="DateTime" Precision="0" />
+          <Property Name="SBH" Type="Int32" />
+          <Property Name="HP" Type="Int32" />
+          <Property Name="IDGV" Type="Int32" />
+          <NavigationProperty Name="GiaoVien" Relationship="Self.FK_IDGV" FromRole="InClass" ToRole="GiaoVien" />
+          <NavigationProperty Name="InStudents" Relationship="Self.FK_ML" FromRole="InClass" ToRole="InStudent" />
+        </EntityType>
+        <EntityType Name="InStudent">
+          <Key>
+            <PropertyRef Name="IDHV" />
+          </Key>
+          <Property Name="IDHV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HT" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="DC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NDKH" Type="DateTime" Precision="0" />
+          <Property Name="TTHP" Type="Boolean" />
+          <Property Name="MaLop" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="30" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="InClass" Relationship="Self.FK_ML" FromRole="InStudent" ToRole="InClass" />
+          <NavigationProperty Name="UserSVs" Relationship="Self.FK_IDHV" FromRole="InStudent" ToRole="UserSV" />
+          <NavigationProperty Name="NopHP" Relationship="Self.FK_IDHV1" FromRole="InStudent" ToRole="NopHP" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserAD">
+          <Key>
+            <PropertyRef Name="IDAD" />
+          </Key>
+          <Property Name="IDAD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaiKhoanAD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MatKhauAD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserSV">
+          <Key>
+            <PropertyRef Name="TaiKhoanSV" />
+          </Key>
+          <Property Name="IDHV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaiKhoanSV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MatKhauSV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="InStudent" Relationship="Self.FK_IDHV" FromRole="UserSV" ToRole="InStudent" />
+        </EntityType>
+        <EntityType Name="NopHP">
+          <Key>
+            <PropertyRef Name="IDHV" />
+          </Key>
+          <Property Name="IDHV" Type="Int32" Nullable="false" />
+          <Property Name="HTHV" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="NgayNop" Type="DateTime" Precision="0" />
+          <Property Name="LoiNhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="InStudent" Relationship="Self.FK_IDHV1" FromRole="NopHP" ToRole="InStudent" />
+        </EntityType>
+        <Association Name="FK_IDGV">
+          <End Role="GiaoVien" Type="Self.GiaoVien" Multiplicity="0..1" />
+          <End Role="InClass" Type="Self.InClass" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="GiaoVien">
+              <PropertyRef Name="IDGV" />
+            </Principal>
+            <Dependent Role="InClass">
+              <PropertyRef Name="IDGV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ML">
+          <End Role="InClass" Type="Self.InClass" Multiplicity="0..1" />
+          <End Role="InStudent" Type="Self.InStudent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InClass">
+              <PropertyRef Name="MaLop" />
+            </Principal>
+            <Dependent Role="InStudent">
+              <PropertyRef Name="MaLop" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IDHV">
+          <End Role="InStudent" Type="Self.InStudent" Multiplicity="1" />
+          <End Role="UserSV" Type="Self.UserSV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="InStudent">
+              <PropertyRef Name="IDHV" />
+            </Principal>
+            <Dependent Role="UserSV">
+              <PropertyRef Name="IDHV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IDHV1">
+          <End Role="InStudent" Type="Self.InStudent" Multiplicity="1" />
+          <End Role="NopHP" Type="Self.NopHP" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="InStudent">
+              <PropertyRef Name="IDHV" />
+            </Principal>
+            <Dependent Role="NopHP">
+              <PropertyRef Name="IDHV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuanLyTTTAEntities3" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GiaoViens" EntityType="Self.GiaoVien" />
+          <EntitySet Name="InClasses" EntityType="Self.InClass" />
+          <EntitySet Name="InStudents" EntityType="Self.InStudent" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="UserADs" EntityType="Self.UserAD" />
+          <EntitySet Name="UserSVs" EntityType="Self.UserSV" />
+          <EntitySet Name="NopHPs" EntityType="Self.NopHP" />
+          <AssociationSet Name="FK_IDGV" Association="Self.FK_IDGV">
+            <End Role="GiaoVien" EntitySet="GiaoViens" />
+            <End Role="InClass" EntitySet="InClasses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ML" Association="Self.FK_ML">
+            <End Role="InClass" EntitySet="InClasses" />
+            <End Role="InStudent" EntitySet="InStudents" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IDHV" Association="Self.FK_IDHV">
+            <End Role="InStudent" EntitySet="InStudents" />
+            <End Role="UserSV" EntitySet="UserSVs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IDHV1" Association="Self.FK_IDHV1">
+            <End Role="InStudent" EntitySet="InStudents" />
+            <End Role="NopHP" EntitySet="NopHPs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QuanLyTTTAModelStoreContainer" CdmEntityContainer="QuanLyTTTAEntities3">
+          <EntitySetMapping Name="GiaoViens">
+            <EntityTypeMapping TypeName="QuanLyTTTAModel.GiaoVien">
+              <MappingFragment StoreEntitySet="GiaoVien">
+                <ScalarProperty Name="IDGV" ColumnName="IDGV" />
+                <ScalarProperty Name="HTGV" ColumnName="HTGV" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="DCGV" ColumnName="DCGV" />
+                <ScalarProperty Name="SDTGV" ColumnName="SDTGV" />
+                <ScalarProperty Name="EmailGV" ColumnName="EmailGV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InClasses">
+            <EntityTypeMapping TypeName="QuanLyTTTAModel.InClass">
+              <MappingFragment StoreEntitySet="InClass">
+                <ScalarProperty Name="MaLop" ColumnName="MaLop" />
+                <ScalarProperty Name="SLHVDK" ColumnName="SLHVDK" />
+                <ScalarProperty Name="SLHVTD" ColumnName="SLHVTD" />
+                <ScalarProperty Name="KGH" ColumnName="KGH" />
+                <ScalarProperty Name="NBD" ColumnName="NBD" />
+                <ScalarProperty Name="SBH" ColumnName="SBH" />
+                <ScalarProperty Name="HP" ColumnName="HP" />
+                <ScalarProperty Name="IDGV" ColumnName="IDGV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InStudents">
+            <EntityTypeMapping TypeName="QuanLyTTTAModel.InStudent">
+              <MappingFragment StoreEntitySet="InStudent">
+                <ScalarProperty Name="IDHV" ColumnName="IDHV" />
+                <ScalarProperty Name="HT" ColumnName="HT" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DC" ColumnName="DC" />
+                <ScalarProperty Name="NDKH" ColumnName="NDKH" />
+                <ScalarProperty Name="TTHP" ColumnName="TTHP" />
+                <ScalarProperty Name="MaLop" ColumnName="MaLop" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="QuanLyTTTAModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserADs">
+            <EntityTypeMapping TypeName="QuanLyTTTAModel.UserAD">
+              <MappingFragment StoreEntitySet="UserAD">
+                <ScalarProperty Name="IDAD" ColumnName="IDAD" />
+                <ScalarProperty Name="TaiKhoanAD" ColumnName="TaiKhoanAD" />
+                <ScalarProperty Name="MatKhauAD" ColumnName="MatKhauAD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSVs">
+            <EntityTypeMapping TypeName="QuanLyTTTAModel.UserSV">
+              <MappingFragment StoreEntitySet="UserSV">
+                <ScalarProperty Name="IDHV" ColumnName="IDHV" />
+                <ScalarProperty Name="TaiKhoanSV" ColumnName="TaiKhoanSV" />
+                <ScalarProperty Name="MatKhauSV" ColumnName="MatKhauSV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NopHPs">
+            <EntityTypeMapping TypeName="QuanLyTTTAModel.NopHP">
+              <MappingFragment StoreEntitySet="NopHP">
+                <ScalarProperty Name="IDHV" ColumnName="IDHV" />
+                <ScalarProperty Name="HTHV" ColumnName="HTHV" />
+                <ScalarProperty Name="NgayNop" ColumnName="NgayNop" />
+                <ScalarProperty Name="LoiNhan" ColumnName="LoiNhan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
